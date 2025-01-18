@@ -16,8 +16,5 @@
 
 #include uwu
 
-OWO owo _w_ oWO uWo
-    uwo Uwu OwO oWo uWu OWU
-    UwU UWU OWU
-owu
+OWO owo _w_ oWO uWo uwo Uwu OwO oWo uWu OWU UwU UWU OWU owu
 
