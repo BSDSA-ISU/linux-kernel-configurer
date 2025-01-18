@@ -40,7 +40,6 @@ makedepends=(
 options=(!debug !strip !buildflags !makeflags)
 
 _prologue() {
-	cd $linux_dir
 	# MAKEFLAGS from makepkg.conf override the ones inherited from kbuild.
 	# Bypass this override with a custom variable.
 	export MAKEFLAGS="${KBUILD_MAKEFLAGS}"
@@ -50,14 +49,12 @@ _prologue() {
 }
 
 build() {
-	cd $linux_dir
 	_prologue
 
 	${MAKE} KERNELRELEASE="${KERNELRELEASE}" KBUILD_BUILD_VERSION="${pkgrel}"
 }
 
 _package() {
-	cd $linux_dir
 	pkgdesc="The ${pkgdesc} kernel and modules"
 
 	local modulesdir="${pkgdir}/usr/${MODLIB}"
@@ -86,7 +83,6 @@ _package() {
 }
 
 _package-headers() {
-	cd $linux_dir
 	pkgdesc="Headers and scripts for building modules for the ${pkgdesc} kernel"
 
 	local builddir="${pkgdir}/usr/${MODLIB}/build"
@@ -109,7 +105,6 @@ _package-headers() {
 }
 
 _package-api-headers() {
-	cd $linux_dir
 	pkgdesc="Kernel headers sanitized for use in userspace"
 	provides=(linux-api-headers="${pkgver}")
 	conflicts=(linux-api-headers)
@@ -120,7 +115,6 @@ _package-api-headers() {
 }
 
 _package-debug(){
-	cd $linux_dir
 	pkgdesc="Non-stripped vmlinux file for the ${pkgdesc} kernel"
 
 	local debugdir="${pkgdir}/usr/src/debug/${pkgbase}"
