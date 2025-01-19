@@ -1,5 +1,4 @@
-from Alimod.troysrc import menuconfig
+from Alimod.troysrc import MenuconfigPacman as pacman
 import os
 
-os.system("cd linux-6.12.10")
-menuconfig()
+pacman()
