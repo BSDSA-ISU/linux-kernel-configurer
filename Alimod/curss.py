@@ -27,6 +27,7 @@ def menu(stdscr):
             if options[current_row] == "Exit":
                 break
             stdscr.addstr(len(options) + 1, 0, f"You selected: {options[current_row]}")
+
             exter = False
           #  stdscr.refresh()
          #   stdscr.getch()
