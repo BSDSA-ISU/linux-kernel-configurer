@@ -24,7 +24,7 @@ def main():
         print("error. pick a valid shit")
         exit
     print("how do you want to start configure your kernel? \n")
-    print("(0) default from /pro/config.gz")
+    print("(0) default from /proc/config.gz")
     print("(1) manual")
     print("(2) ")
     
