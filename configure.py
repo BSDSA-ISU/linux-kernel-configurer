@@ -1,4 +1,4 @@
-from Alimod.troysrc import MenuconfigPacman as pacman
+from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman
 import os
 from Alimod import versions
 
@@ -25,13 +25,16 @@ def main():
         exit
     if version == 0:
         print("still no rc release out there yet.")
-        
+    elif version == 1:
+        vername = versions.linux613()
+        print(vername)
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
     print("(1) manual")
     print("(2) based on modules/feature that are used by this machine(make sure to turn on every mod you need)")
-    input(">>")
-
+    how = int(input(">>"))
+    if how == 0:
+        DefconfigPacman(vername)
 main()
 #
 # pacman()
