@@ -8,7 +8,7 @@ def main():
     print("What version of linux Do you want to install? \n")
     print("(0) Release Candidated Linux (not available for now)")
     print("(1) mainline Linux 6.13")
-    print("(2) LTS Linux 6.12")
+    print("(2) LTS Soon Linux 6.12")
     print("(3) LTS Linux 6.6")
     print("(4) LTS Linux 6.1")
     print("(5) LTS Linux 5.15")
@@ -43,6 +43,8 @@ def main():
         DefconfigPacman(vername)
     elif how == 1:
         MenuconfigPacman(vername)
+    elif how == 2:
+        LocalModConfigpacman(vername)
 
 main()
 #
