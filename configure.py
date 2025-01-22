@@ -1,4 +1,4 @@
-from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman
+from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 import os
 from Alimod import versions
 
@@ -30,6 +30,8 @@ def main():
     elif version == 1:
         vername = versions.linux613()
         print(vername)
+    elif version == 2:
+        vername = versions.linux612()
 
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
@@ -39,6 +41,9 @@ def main():
     how = int(input(">>"))
     if how == 0:
         DefconfigPacman(vername)
+    elif how == 1:
+        MenuconfigPacman(vername)
+
 main()
 #
 # pacman()
