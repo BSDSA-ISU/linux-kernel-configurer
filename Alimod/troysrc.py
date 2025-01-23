@@ -3,6 +3,7 @@ import os
 def MenuconfigPacman(version):
     os.system(f"cd {version} && make menuconfig -j4")
     os.system(f"cd {version} && make -j {os.cpu_count()} pacman-pkg")
+    os.system(f"cd {version} && sudo pacman -U *headers* *linux-upstream-6*")
 
 
 #don't mind this
