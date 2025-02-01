@@ -1,10 +1,10 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
-import os
 from Alimod import versions
-
+from Alimod import clean
 
 
 def main():
+    clean.clean()
     print("What version of linux Do you want to install? \n")
     print("(0) Release Candidated Linux (not available for now)")
     print("(1) mainline Linux 6.13")
@@ -21,8 +21,7 @@ def main():
 
     if version > 8:
         print("error. pick a valid shit")
-
-        exit
+        return 9
 
     if version == 0:
         print("still no rc release out there yet.")
@@ -45,6 +44,7 @@ def main():
         MenuconfigPacman(vername)
     elif how == 2:
         LocalModConfigpacman(vername)
+
 
 main()
 #
