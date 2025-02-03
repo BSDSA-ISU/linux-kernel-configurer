@@ -1,5 +1,9 @@
 import os
 
+def linuxrc():
+    rclink = "https://git.kernel.org/torvalds/t/linux-6.14-rc1.tar.gz"
+    if os.path.isfile("linux-6.14-rc1.tar.gz"):
+        os.system(f"wget {rclink}")
 
 def linux613():
     linuxversion = "linux-6.13.1"
