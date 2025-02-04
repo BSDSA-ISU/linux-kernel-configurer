@@ -18,18 +18,22 @@ def main():
         print("error pick a valid shit")
         return 2
 
-    if version > 8:
+    if version >= 5:
         print("error. pick a valid shit")
         return 9
 
     if version == 0:
-        print("still no rc release out there yet.")
+        vername = versions.linuxrc()
 
     elif version == 1:
         vername = versions.linux613()
         print(vername)
     elif version == 2:
         vername = versions.linux612()
+    elif version == 3:
+        vername = versions.linux66()
+    elif verson == 4:
+        vername = versions.linux61()
 
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
