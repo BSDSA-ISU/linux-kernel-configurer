@@ -1,5 +1,5 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
-from Alimod import versions
+from Alimod.versions import Version
 from Alimod import clean
 
 
@@ -23,17 +23,17 @@ def main():
         return 9
 
     if version == 0:
-        vername = versions.linuxrc()
+        vername = Version.linuxrc()
 
     elif version == 1:
-        vername = versions.linux613()
+        vername = Version.linux613()
         print(vername)
     elif version == 2:
-        vername = versions.linux612()
+        vername = Version.linux612()
     elif version == 3:
-        vername = versions.linux66()
-    elif verson == 4:
-        vername = versions.linux61()
+        vername = Version.linux66()
+    elif version == 4:
+        vername = Version.linux61()
 
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
@@ -41,6 +41,7 @@ def main():
     print("(2) based on modules/feature that are used by this machine(make sure to turn on every mod you need)")
 
     how = int(input(">>"))
+
     if how == 0:
         DefconfigPacman(vername)
     elif how == 1:
@@ -48,7 +49,10 @@ def main():
     elif how == 2:
         LocalModConfigpacman(vername)
 
+try:
+    main()
+except KeyboardInterrupt:
+    print("canceled")
 
-main()
 #
 # pacman()
