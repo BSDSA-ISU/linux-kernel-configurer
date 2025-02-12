@@ -33,7 +33,7 @@ class Version:
 
     @staticmethod
     def linux66():
-        linuxversion = "linux-6.6.76"
+        linuxversion = "6.6.77"
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
