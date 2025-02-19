@@ -1,7 +1,7 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 from Alimod.versions import Version
 from Alimod import clean
-
+#import .home/ali/Ai-Hoshino/lib/python3.13/site-packages/idna
 
 def main():
     clean.clean()
