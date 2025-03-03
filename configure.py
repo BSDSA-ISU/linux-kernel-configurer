@@ -9,8 +9,8 @@ def main():
     print("(0) Release Candidated 1 Linux 6.14")
     print("(1) Stable Linux 6.13")
     print("(2) LTS Linux 6.12")
-    print("(3) LTS Linux 6.6")
-    print("(4) LTS Linux 6.1")
+#    print("(3) LTS Linux 6.6")
+#    print("(4) LTS Linux 6.1")
 
     try:
         version = int(input(">>"))
@@ -30,10 +30,7 @@ def main():
         print(vername)
     elif version == 2:
         vername = Version.linux612()
-    elif version == 3:
-        vername = Version.linux66()
-    elif version == 4:
-        vername = Version.linux61()
+
 
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
@@ -56,3 +53,9 @@ except KeyboardInterrupt:
 
 #
 # pacman()
+'''
+    elif version == 3:
+        vername = Version.linux66()
+    elif version == 4:
+        vername = Version.linux61()
+'''
