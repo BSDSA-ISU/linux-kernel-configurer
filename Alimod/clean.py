@@ -6,7 +6,7 @@ def clean():
     for files in os.listdir():
         try:
             if isdir(files):
-                os.system(f"rm -rvf {files}/linux-upstream*")
+                os.system(f"rm -rvf {files}/linux-*")
         except FileNotFoundError:
             continue
 
