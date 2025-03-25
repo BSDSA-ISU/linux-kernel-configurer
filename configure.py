@@ -1,13 +1,12 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 from Alimod.versions import Version
 from Alimod import clean
-from os import system
 #import .home/ali/Ai-Hoshino/lib/python3.13/site-packages/idna
 
 def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
-    print("(0) Release Candidated 5 Linux 6.14")
+    print("(0) Release Linux 6.14")
     print("(1) Stable Linux 6.13")
     print("(2) LTS Linux 6.12")
 #    print("(3) LTS Linux 6.6")
@@ -39,8 +38,6 @@ def main():
     print("(2) based on modules/feature that are used by this machine(make sure to turn on every mod you need)")
 
     how = int(input(">>"))
-
-    system("vim PKGBUILD")
 
     if how == 0:
         DefconfigPacman(vername)
