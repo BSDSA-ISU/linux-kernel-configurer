@@ -23,7 +23,7 @@ def DefconfigPacman(version):
     os.system(f"vim {version}/PKGBUILD")
     os.system(f"cd {version} && make -j {os.cpu_count()} pacman-pkg")
     print("it may ask you that linux-upstream-api-headres and linux-api-headers are in conflict just click y no need 2 worry")
-    os.system(f"cd {version} && sudo pacman -U *headers* *linux-upstream-6*")
+    os.system(f"cd {version} && sudo pacman -U *headers* *linux*")
 
 
 def LocalModConfigpacman(version):
