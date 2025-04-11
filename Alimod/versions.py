@@ -19,7 +19,7 @@ class Version:
 
     @staticmethod
     def linux613():
-        linuxversion = "linux-6.13.10"
+        linuxversion = "linux-6.13.11"
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
@@ -28,7 +28,7 @@ class Version:
 
     @staticmethod
     def linux612():
-        linuxversion = "linux-6.12.22"
+        linuxversion = "linux-6.12.23"
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
