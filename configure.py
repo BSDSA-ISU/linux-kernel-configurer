@@ -1,7 +1,6 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 from Alimod.versions import Version
 from Alimod import clean
-#import .home/ali/Ai-Hoshino/lib/python3.13/site-packages/idna
 
 def main():
     clean.clean()
@@ -9,9 +8,6 @@ def main():
     print("(0) Release Linux 6.14")
     print("(1) Stable Linux 6.13")
     print("(2) LTS Linux 6.12")
-#    print("(3) LTS Linux 6.6")
-#    print("(4) LTS Linux 6.1")
-
     try:
         version = int(input(">>"))
     except ValueError:
