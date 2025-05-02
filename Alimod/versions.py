@@ -10,7 +10,7 @@ myclass.myself()
 class Version:
     @staticmethod
     def linuxrc():
-        linuxversion = "linux-6.15-rc3"
+        linuxversion = "linux-6.15-rc4"
         rclink = "https://git.kernel.org/torvalds/t/linux-6.15-rc1.tar.gz"
         if os.path.exists("linux-6.15-rc1.tar.gz") == False:
             os.system(f"wget {rclink}")
@@ -19,7 +19,7 @@ class Version:
 
     @staticmethod
     def linux613():
-        linuxversion = "linux-6.14.4"
+        linuxversion = "linux-6.14.5"
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
@@ -28,7 +28,7 @@ class Version:
 
     @staticmethod
     def linux612():
-        linuxversion = "linux-6.12.25"
+        linuxversion = "linux-6.12.26"
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
