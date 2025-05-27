@@ -10,11 +10,11 @@ myclass.myself()
 class Version:
     @staticmethod
     def linuxrc():
-        linuxversion = "linux-6.15-rc7"
-        rclink = "https://git.kernel.org/torvalds/t/linux-6.15-rc6.tar.gz"
-        if os.path.exists("linux-6.15-rc6.tar.gz") == False:
+        linuxversion = "linux-6.15"
+        rclink = f"https://cdn.kernel.org/pub/linux/kernel/x6.x/{linuxversion}.tar.xz"
+        if os.path.exists("linux-6.15.tar.gz") == False:
             os.system(f"wget {rclink}")
-            os.system(f"tar -xvf linux-6.15-rc6.tar.gz")
+            os.system(f"tar -xvf {linuxversion}.tar.xz")
         return linuxversion
 
     @staticmethod
