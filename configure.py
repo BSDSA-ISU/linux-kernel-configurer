@@ -5,8 +5,8 @@ from Alimod import clean
 def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
-    print("(0) Release Linux 6.14")
-    print("(1) Stable Linux 6.13")
+    print("(0) Release Linux 6.15")
+    print("(1) Stable Linux 6.14")
     print("(2) LTS Linux 6.12")
     try:
         version = int(input(">>"))
