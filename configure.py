@@ -2,6 +2,8 @@ from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacm
 from Alimod.versions import Version
 from Alimod import clean
 
+version = Version()
+
 def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
@@ -9,23 +11,24 @@ def main():
     print("(1) Stable Linux 6.14")
     print("(2) LTS Linux 6.12")
     try:
-        version = int(input(">>"))
+        dversion = int(input(">>"))
     except ValueError:
         print("error pick a valid shit")
         return 2
 
-    if version >= 5:
+    if dversion >= 5:
         print("error. pick a valid shit")
         return 9
 
-    if version == 0:
-        vername = Version.linuxrc()
+    if dversion == 0:
+        pass
 
-    elif version == 1:
-        vername = Version.linux613()
-        print(vername)
-    elif version == 2:
-        vername = Version.linux612()
+    elif dversion == 1:
+        vername = "stable"
+        kver = version.fetchver(vername)
+    elif dversion == 2:
+        vername = "12lts"
+        kver = version.fetchver(vername)
 
 
     print("how do you want to start configure your kernel? \n")
@@ -36,11 +39,11 @@ def main():
     how = int(input(">>"))
 
     if how == 0:
-        DefconfigPacman(vername)
+        DefconfigPacman(kver)
     elif how == 1:
-        MenuconfigPacman(vername)
+        MenuconfigPacman(kver)
     elif how == 2:
-        LocalModConfigpacman(vername)
+        LocalModConfigpacman(kver)
 
 try:
     main()

@@ -36,6 +36,10 @@ makedepends=(
 )
 options=(!debug !strip !buildflags !makeflags)
 
+provides=(AiHoshino HoshinoAi Linuxsexy Yuri)
+
+
+
 _prologue() {
 	# MAKEFLAGS from makepkg.conf override the ones inherited from kbuild.
 	# Bypass this override with a custom variable.
