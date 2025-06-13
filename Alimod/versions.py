@@ -30,3 +30,4 @@ class Version:
 
         version = Version.getver(ver)
         Version.linuxdownload(version)
+        return version
