@@ -10,13 +10,18 @@ def main():
     print("(0) Release Linux 6.15")
     print("(1) Stable Linux 6.14")
     print("(2) LTS Linux 6.12")
+    print("(3) Linux LTS 6.6")
+    print("(4) Linux LTS 6.1")
+    print("(5) Linux LTS 5.15")
+    print("(6) Linux LTS 5.10")
+    print("(7) Linux LTS 5.4")
     try:
         dversion = int(input(">>"))
     except ValueError:
         print("error pick a valid shit")
         return 2
 
-    if dversion >= 5:
+    if dversion >= 8:
         print("error. pick a valid shit")
         return 9
 
@@ -25,9 +30,22 @@ def main():
 
     elif dversion == 1:
         vername = "stable"
-        kver = version.fetchver(vername)
     elif dversion == 2:
-        vername = "12lts"
+        vername = "linux612lts"
+    elif dversion == 3:
+        vername = "linux66lts"
+    elif dversion== 4:
+        vername = "linux61lts"
+    elif dversion == 5:
+        vername = "linux515lts"
+    elif dversion == 6:
+        vername = "linux510lts"
+    elif dversion == 7:
+        vername = "linux54lts"
+
+    if dversion >= 5:
+        kver = version.fetchver5(vername)
+    else:
         kver = version.fetchver(vername)
 
 
@@ -38,12 +56,20 @@ def main():
 
     how = int(input(">>"))
 
-    if how == 0:
-        DefconfigPacman(kver)
-    elif how == 1:
-        MenuconfigPacman(kver)
-    elif how == 2:
-        LocalModConfigpacman(kver)
+    if dversion >=5:
+        if how == 0:
+            DefconfigPacman(kver, args="CC=gcc -std=gnu89")
+        elif how == 1:
+            MenuconfigPacman(kver, args="CC=gcc -std=gnu89")
+        elif how == 2:
+            LocalModConfigpacman(kver, args="CC=gcc -std=gnu89")
+    else:
+        if how == 0:
+            DefconfigPacman(kver)
+        elif how == 1:
+            MenuconfigPacman(kver)
+        elif how == 2:
+            LocalModConfigpacman(kver)
 
 try:
     main()
