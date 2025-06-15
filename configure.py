@@ -1,6 +1,7 @@
 from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 from Alimod.versions import Version
 from Alimod import clean
+from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5
 
 version = Version()
 
@@ -56,13 +57,13 @@ def main():
 
     how = int(input(">>"))
 
-    if dversion >=5:
+    if dversion <=6:
         if how == 0:
-            DefconfigPacman(kver, args="CC=gcc -std=gnu89")
+            DefconfigPacman5(kver)
         elif how == 1:
-            MenuconfigPacman(kver, args="CC=gcc -std=gnu89")
+            MenuconfigPacman5(kver)
         elif how == 2:
-            LocalModConfigpacman(kver, args="CC=gcc -std=gnu89")
+            LocalModConfigpacman5(kver)
     else:
         if how == 0:
             DefconfigPacman(kver)
