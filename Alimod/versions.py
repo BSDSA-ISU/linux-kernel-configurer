@@ -4,8 +4,24 @@ import requests
 class Version:
     @staticmethod
     def linuxdownload(linuxversion):
+        if os.path.exists(linuxversion) == False or "rc" in linuxversion:
+            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
+            os.system(f"tar -xvf {linuxversion}.tar.xz")
+
         if os.path.exists(linuxversion) == False:
             os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
+            os.system(f"tar -xvf {linuxversion}.tar.xz")
+
+        return linuxversion
+
+    @staticmethod
+    def linuxdownload5(linuxversion):
+        if os.path.exists(linuxversion) == False or "rc" in linuxversion:
+            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz'")
+            os.system(f"tar -xvf {linuxversion}.tar.xz")
+
+        if os.path.exists(linuxversion) == False:
+            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz'")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
 
         return linuxversion
@@ -22,12 +38,13 @@ class Version:
             print("no version available. exiting...")
             exit(9)
     
-    def fetchver(self, kerneltype):
-        if kerneltype == "12lts":
-            ver = "linux612lts"
-        elif kerneltype == "stable":
-            ver = "linuxstable"
 
-        version = Version.getver(ver)
+    def fetchver(self, kerneltype:str):
+        version = Version.getver(kerneltype)
         Version.linuxdownload(version)
+        return version
+
+    def fetchver5(self, kerneltype:str):
+        version = Version.getver(kerneltype)
+        Version.linuxdownload5(version)
         return version
