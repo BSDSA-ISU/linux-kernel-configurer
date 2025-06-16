@@ -17,7 +17,7 @@ class Version:
     @staticmethod
     def linuxdownload5(linuxversion):
         if os.path.exists(linuxversion) == False or "rc" in linuxversion:
-            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz'")
+            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz' || wget 'https://git.kernel.org/torvalds/t/{linuxversion}.tar.gz")
             os.system(f"tar -xvf {linuxversion}.tar.xz")
 
         if os.path.exists(linuxversion) == False:
