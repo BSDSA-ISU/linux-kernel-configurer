@@ -1,4 +1,4 @@
-from Alimod.troysrc import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
+from Alimod.linux import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
 from Alimod.versions import Version
 from Alimod import clean
 from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5
@@ -76,12 +76,6 @@ try:
     main()
 except KeyboardInterrupt:
     print("canceled")
+except Exception:
+    print("Somthin went wrong")
 
-#
-# pacman()
-'''
-    elif version == 3:
-        vername = Version.linux66()
-    elif version == 4:
-        vername = Version.linux61()
-'''
