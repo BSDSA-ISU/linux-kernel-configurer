@@ -8,7 +8,7 @@ version = Version()
 def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
-    print("(0) Release Linux 6.15")
+    print("(0) Rc Linux")
     print("(1) Stable Linux 6.14")
     print("(2) LTS Linux 6.12")
     print("(3) Linux LTS 6.6")
@@ -27,8 +27,7 @@ def main():
         return 9
 
     if dversion == 0:
-        pass
-
+        vername = "linuxrc"
     elif dversion == 1:
         vername = "stable"
     elif dversion == 2:
