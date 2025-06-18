@@ -23,15 +23,15 @@ build() {
     tar -xvf ../*.tar
     rm -rvf boot/System.map*
     rm -rvf boot/vmlinux*
-    rm -rvf lib/modules/*/build
+    rm -rvf lib/modules/*/build || return 0
     mv -v boot/config* boot/config-Ai-Hoshino
     mv -v boot/vmlinuz* boot/vmlinuz-Ai-Hoshino
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/lib"
-    mkdir -p "$pkgdir/etc/mkinitcpio.d/"
+    mkdir -p "$pkgdir/usr/lib" || return 0
+    mkdir -p "$pkgdir/etc/mkinitcpio.d/" || return 0
     cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-Ai-Hoshino.preset"
-    cp -rvfa -- boot "$pkgdir/"
-    cp -rvfa -- lib/* "$pkgdir/usr/lib"
+    cp -rvfa -- boot "$pkgdir/" 
+    cp -rvfa -- lib/* "$pkgdir/usr/lib" || return 0
 }
