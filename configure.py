@@ -1,7 +1,8 @@
-from Alimod.linux import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman
+from Alimod.linux import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman, DirectCompile
 from Alimod.versions import Version
 from Alimod import clean
-from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5
+from Alimod.linuxrc import LocalModConfigpacmanrc, DefconfigPacmanrc, MenuconfigPacmanrc, DirectCompilerc
+from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5, DirectCompile5
 
 version = Version()
 
@@ -43,8 +44,10 @@ def main():
     elif dversion == 7:
         vername = "linux54lts"
 
-    if dversion >= 5:
+    if 1 <=  dversion >= 5:
         kver = version.fetchver5(vername)
+    elif dversion == 0:
+        kver = version.fetchverrc(vername)
     else:
         kver = version.fetchver(vername)
 
@@ -53,16 +56,30 @@ def main():
     print("(0) default from /proc/config.gz")
     print("(1) manual")
     print("(2) based on modules/feature that are used by this machine(make sure to turn on every mod you need)")
+    print("(3) Direct compile(do nothing)")
 
     how = int(input(">>"))
 
-    if dversion <=6:
+    if dversion == 0:
+        if how == 0:
+            DefconfigPacmanrc(kver)
+        elif how == 1:
+            MenuconfigPacmanrc(kver)
+        elif how == 2:
+            LocalModConfigpacman5(kver)
+        elif how == 3:
+            DirectCompile5(kver)
+
+    elif 1 <= dversion <=6:
         if how == 0:
             DefconfigPacman5(kver)
         elif how == 1:
             MenuconfigPacman5(kver)
         elif how == 2:
             LocalModConfigpacman5(kver)
+        elif how == 3:
+            DirectCompile5(kver)
+
     else:
         if how == 0:
             DefconfigPacman(kver)
@@ -70,11 +87,13 @@ def main():
             MenuconfigPacman(kver)
         elif how == 2:
             LocalModConfigpacman(kver)
+        elif how == 3:
+            DirectCompile(kver)
 
 try:
     main()
 except KeyboardInterrupt:
     print("canceled")
 except Exception:
-    print("Somthin went wrong")
+    raise Exception
 
