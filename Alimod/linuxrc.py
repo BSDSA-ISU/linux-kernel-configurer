@@ -1,5 +1,4 @@
 import os
-from os.path import isfile
 
 def MenuconfigPacmanrc(version):
     print(version)
@@ -9,14 +8,6 @@ def MenuconfigPacmanrc(version):
     os.system(f"vim {version}/PKGBUILD")
     os.system(f"cd {version} && make -j {x} tar-pkg")
     os.system(f"cd {version} && makepkg --cleanbuild -si")
-
-#    os.system(f"cd {version} && make menuconfig -j4")
-#    os.system(f"cp -rvf install/* {version}")
-#    os.system(f"vim {version}/PKGBUILD")
-#    os.system(f"cd {version} && make -j {x} tar-pkg")
-#    os.system(f"cd {version} && makepkg --cleanbuild -si")
-    #os.system(f"cd {version} && sudo pacman -U *tar")
-
 
 def DefconfigPacmanrc(version):
     x = input("how many cpu cores(1, 2, 3, 4, 5 etc)? \n>>")
