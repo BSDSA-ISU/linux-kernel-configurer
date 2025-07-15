@@ -10,7 +10,7 @@ def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
     print("(0) Rc Linux")
-    print("(1) Stable Linux 6.14")
+    print("(1) Stable Linux 6.15")
     print("(2) LTS Linux 6.12")
     print("(3) Linux LTS 6.6")
     print("(4) Linux LTS 6.1")
@@ -30,7 +30,7 @@ def main():
     if dversion == 0:
         vername = "linuxrc"
     elif dversion == 1:
-        vername = "stable"
+        vername = "linuxstable"
     elif dversion == 2:
         vername = "linux612lts"
     elif dversion == 3:
@@ -44,7 +44,7 @@ def main():
     elif dversion == 7:
         vername = "linux54lts"
 
-    if 1 <=  dversion >= 5:
+    if  dversion >= 5:
         kver = version.fetchver5(vername)
     elif dversion == 0:
         kver = version.fetchverrc(vername)
@@ -66,11 +66,11 @@ def main():
         elif how == 1:
             MenuconfigPacmanrc(kver)
         elif how == 2:
-            LocalModConfigpacman5(kver)
+            LocalModConfigpacmanrc(kver)
         elif how == 3:
-            DirectCompile5(kver)
+            DirectCompilerc(kver)
 
-    elif 1 <= dversion <=6:
+    elif dversion >=5:
         if how == 0:
             DefconfigPacman5(kver)
         elif how == 1:
