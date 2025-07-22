@@ -1,37 +1,48 @@
-# Maintainer: Ali Ali <ALiseisusarian1111@google.com>
-pkgname="linux-hoshino"
-pkgver=6.12.33
-pkgrel=1
-pkgdesc="Linux kernel made with my love for Ai Hoshino"
+# Maintainer: Ali Ali <AlieAlii@goo.su>
+pkgname="linux-kyouko"
+pkgver=6.15.7
+pkgrel=4
+pkgdesc="Linux kernel made with kyouko power"
 arch=('x86_64')
 url="https://kernel.org/"
 license=('GPL-2.0-only')
 groups=('base-devel')
 depends=('glibc')
-replaces=('linux-testing' 'linux-hoshino')
-makedepends=('coreutils' "make" "pacman")
-optdepends=('coreutils: Like.. really bruh?'
+replaces=('linux-hoshino')
+makedepends=('coreutils'  'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'rust' 'llvm' 'pahole' 'pacman')
+optdepends=('coreutils: simple Linux tools functionality?'
     "ani-cli: Sit back and watch anime."
     "sway: best simple waylander experience"
+    "stash-bin: An organizer for your porn, written in Go"
+    "mkinitcpio: Modular initramfs image creation utility"
 )
 install=linux.install
-provides=("pleasure" "AiHoshino" "HoshinoAi" "kernel" "modules" "PeakYuri")
+provides=("pleasure" "Kyouko" "kernel" "modules" "PeakYuri" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
+conflicts=("linux-hoshino")
+
+prepare() {
+    cd ..
+    mkdir -p "$srcdir/usr"
+    make headers_install INSTALL_HDR_PATH="$srcdir/usr"
+}
 
 build() {
+    mkdir -p "$srcdir/usr"
     cd "$srcdir"
     mkdir -p etc/mkinitcpio.d
     tar -xvf ../*.tar
     rm -rvf boot/System.map*
     rm -rvf boot/vmlinux*
     rm -rvf lib/modules/*/build || return 0
-    mv -v boot/config* boot/config-Ai-Hoshino
-    mv -v boot/vmlinuz* boot/vmlinuz-Ai-Hoshino
+    mv -v boot/config* boot/config-kyouko
+    mv -v boot/vmlinuz* boot/vmlinuz-kyouko
 }
 
 package() {
     mkdir -p "$pkgdir/usr/lib" || return 0
     mkdir -p "$pkgdir/etc/mkinitcpio.d/" || return 0
-    cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-Ai-Hoshino.preset"
+    cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-kyouko.preset"
     cp -rvfa -- boot "$pkgdir/" 
     cp -rvfa -- lib/* "$pkgdir/usr/lib" || return 0
+    cp -rvfa -- usr/* "$pkgdir/usr/" || return 0
 }

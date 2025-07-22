@@ -1,16 +1,16 @@
 # mkinitcpio preset file for the 'Ai-Hoshino' package
 
 #ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/boot/vmlinuz-Ai-Rc"
+ALL_kver="/boot/vmlinuz-kyouko"
 
 PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/initramfs-Ai-Rc.img"
+default_image="/boot/initramfs-kyouko.img"
 #default_uki="/efi/EFI/Linux/arch-Ai-Hoshino.efi"
 #default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
 
 #fallback_config="/etc/mkinitcpio.conf"
-#fallback_image="/boot/initramfs-Ai-Hoshino-fallback.img"
+fallback_image="/boot/initramfs-kyouko-fallback.img"
 #fallback_uki="/efi/EFI/Linux/arch-Ai-Hoshino-fallback.efi"
-#fallback_options="-S autodetect"
+fallback_options="-S autodetect"
