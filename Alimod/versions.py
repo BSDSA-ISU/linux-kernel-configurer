@@ -1,35 +1,39 @@
 import os
 import requests
+import subprocess
 
 class Version:
     @staticmethod
     def linuxdownload(linuxversion):
-        if os.path.exists(linuxversion) == False or "rc" in linuxversion:
-            os.system(f"wget 'https://git.kernel.org/torvalds/t/{linuxversion}.tar.gz'")
-            os.system(f"tar -xvf {linuxversion}.tar.xz")
-
         if os.path.exists(linuxversion) == False:
-            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.xz'")
-            os.system(f"tar -xvf {linuxversion}.tar.xz")
+            Version.getkey(linuxversion)
+            os.system(f"wget -c 'https://cdn.kernel.org/pub/linux/kernel/v6.x/{linuxversion}.tar.gz'")
+            i = Version.verity(linuxversion)
+
+            if int(i) != 0:
+                print("verification Failed.")
+                exit(8)
+            else:
+                os.system(f"tar -xvf {linuxversion}.tar")
 
         return linuxversion
 
     @staticmethod
     def linuxdownload5(linuxversion):
         if os.path.exists(linuxversion) == False or "rc" in linuxversion:
-            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz'")
-            os.system(f"tar -xvf {linuxversion}.tar.xz")
+            os.system(f"wget -c 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.gz'")
+            os.system(f"tar -xvf {linuxversion}.tar.gz")
 
         if os.path.exists(linuxversion) == False:
-            os.system(f"wget 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.xz'")
-            os.system(f"tar -xvf {linuxversion}.tar.xz")
+            os.system(f"wget -c 'https://cdn.kernel.org/pub/linux/kernel/v5.x/{linuxversion}.tar.gz'")
+            os.system(f"tar -xvf {linuxversion}.tar.gz")
 
         return linuxversion
 
     @staticmethod
     def linuxdownloadrc(linuxversion):
         if os.path.exists(linuxversion) == False:
-            os.system(f"wget 'https://git.kernel.org/torvalds/t/{linuxversion}.tar.gz'")
+            os.system(f"wget -c 'https://git.kernel.org/torvalds/t/{linuxversion}.tar.gz'")
             os.system(f"tar -xvf {linuxversion}.tar.gz")
 
         return linuxversion
@@ -47,6 +51,21 @@ class Version:
             print("no version available. exiting...")
             exit(9)
 
+    @staticmethod
+    def verity(version):
+        subprocess.run(["gzip", "-d", f"{version}.tar.gz"])
+        s = subprocess.run(["gpg2", "--verify", f"{version}.tar.sign"])
+        return s.returncode
+
+    @staticmethod
+    def getkey(version):
+        os.system(f"wget -c https://cdn.kernel.org/pub/linux/kernel/v6.x/{version}.tar.sign")
+
+    @staticmethod
+    def getkey5(version):
+        os.system(f"wget -c https://cdn.kernel.org/pub/linux/kernel/v5.x/{version}.tar.sign")
+
+
     def fetchver(self, kerneltype:str):
         version = Version.getver(kerneltype)
         Version.linuxdownload(version)
@@ -61,3 +80,5 @@ class Version:
         version = Version.getver(kerneltype)
         Version.linuxdownloadrc(version)
         return version
+
+
