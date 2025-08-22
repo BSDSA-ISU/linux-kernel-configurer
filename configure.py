@@ -10,7 +10,7 @@ def main():
     clean.clean()
     print("What version of linux Do you want to install? \n")
     print("(0) Rc Linux")
-    print("(1) stable Linux 6.15")
+    print("(1) stable Linux 6.16")
     print("(2) LTS Linux 6.12")
     print("(3) Linux LTS 6.6")
     print("(4) Linux LTS 6.1")
