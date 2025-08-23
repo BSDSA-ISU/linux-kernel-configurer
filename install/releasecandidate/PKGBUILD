@@ -13,12 +13,11 @@ makedepends=('coreutils'  'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'p
 optdepends=('coreutils: simple Linux tools functionality?'
     "ani-cli: Sit back and watch anime."
     "sway: best simple waylander experience"
-    "stash-bin: An organizer for your porn, written in Go"
     "mkinitcpio: Modular initramfs image creation utility"
 )
 install=linux.install
-provides=("pleasure" "Kyouko" "kernel" "modules" "PeakYuri" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
-conflicts=("linux-hoshino")
+provides=("pleasure" 'linux' "Kyouko" "kernel" "modules" "PeakYuri" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
+conflicts=("linux-hoshino" 'linux-kyouko')
 
 prepare() {
     cd ..

@@ -15,7 +15,7 @@ optdepends=('coreutils: Like.. really bruh?'
     "sway: best simple waylander experience"
 )
 install=linux.install
-provides=("pleasure" "AiHoshino" "HoshinoAi" "kernel" "modules" "PeakYuri" 'linux-headers' 'linux-hoshino' "linux-api-headers=$pkgver")
+provides=("pleasure" "linux" "AiHoshino" "HoshinoAi" "kernel" "modules" "PeakYuri" 'linux-headers' 'linux-hoshino' "linux-api-headers=$pkgver")
 
 
 
