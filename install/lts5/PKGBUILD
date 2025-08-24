@@ -29,9 +29,7 @@ build() {
     cd "$srcdir"
     mkdir -p etc/mkinitcpio.d
     tar -xvf ../*.tar
-    rm -rvf boot/System.map*
     rm -rvf boot/vmlinux*
-    rm -rvf lib/modules/*/build || return 0
     mv -v boot/config* boot/config-Ai-lts
     mv -v boot/vmlinuz* boot/vmlinuz-Ai-lts
 }

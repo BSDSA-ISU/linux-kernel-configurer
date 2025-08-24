@@ -22,7 +22,7 @@ conflicts=("linux-hoshino" 'linux-kyouko')
 prepare() {
     cd ..
     mkdir -p "$srcdir/usr"
-    make headers_install INSTALL_HDR_PATH="$srcdir/usr"
+    make -j ${nproc} headers_install INSTALL_HDR_PATH="$srcdir/usr"
 }
 
 build() {
@@ -30,9 +30,7 @@ build() {
     cd "$srcdir"
     mkdir -p etc/mkinitcpio.d
     tar -xvf ../*.tar
-    rm -rvf boot/System.map*
     rm -rvf boot/vmlinux*
-    rm -rvf lib/modules/*/build || return 0
     mv -v boot/config* boot/config-kyouko
     mv -v boot/vmlinuz* boot/vmlinuz-kyouko
 }
