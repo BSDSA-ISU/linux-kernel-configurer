@@ -2,7 +2,7 @@
 # Maintainer: Thomas Weißschuh <linux@weissschuh.net>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=${PACMAN_PKGBASE:-linux-funami}
+pkgbase=${PACMAN_PKGBASE:-linux-hoshino}
 pkgname=("${pkgbase}")
 
 _extrapackages=${PACMAN_EXTRAPACKAGES-headers api-headers debug}
@@ -14,7 +14,7 @@ pkgver="${KERNELRELEASE//-/_}"
 # The PKGBUILD is evaluated multiple times.
 # Running scripts/build-version from here would introduce inconsistencies.
 pkgrel="${KBUILD_REVISION}"
-pkgdesc='Linux Kernel made with my love for Shigure Minaduki'
+pkgdesc='Linux Kernel made with my love for Hoshino Ai'
 url='https://www.kernel.org/'
 # Enable flexible cross-compilation
 arch=(${CARCH})
@@ -35,6 +35,10 @@ makedepends=(
 	tar
 )
 options=(!debug !strip !buildflags !makeflags)
+
+provides=(AiHoshino HoshinoAi Linuxsexy Yuri)
+
+
 
 _prologue() {
 	# MAKEFLAGS from makepkg.conf override the ones inherited from kbuild.
