@@ -9,15 +9,14 @@ license=('GPL-2.0-only')
 groups=('base-devel')
 depends=('glibc')
 replaces=('linux-hoshino')
-makedepends=('coreutils'  'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'rust' 'llvm' 'pahole' 'pacman')
+makedepends=('coreutils' 'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'rust' 'pahole' 'pacman')
 optdepends=('coreutils: simple Linux tools functionality?'
     "ani-cli: Sit back and watch anime."
     "sway: best simple waylander experience"
-    "stash-bin: An organizer for your porn, written in Go"
     "mkinitcpio: Modular initramfs image creation utility"
 )
 install=linux.install
-provides=("pleasure" "Kyouko" "kernel" "modules" "PeakYuri" "linux" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
+provides=("Kyouko" "modules" "PeakYuri" "linux" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
 conflicts=("linux-hoshino")
 
 prepare() {
