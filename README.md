@@ -20,5 +20,5 @@
 - **soon**
   - iwlwifi-next
   - wireless-next
-- **will not add
+- **will not add**
   - linux-next
