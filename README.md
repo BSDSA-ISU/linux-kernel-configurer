@@ -17,8 +17,7 @@
   - linux 5.15 lts
   - linux 5.10 lts
   - linux 5.4 lts
+  - linux-next
 - **soon**
   - iwlwifi-next
   - wireless-next
-- **will not add**
-  - linux-next

@@ -79,7 +79,7 @@ def main():
             linux_next.DirectCompile(kver)
 
 
-    if dversion == 0:
+    elif dversion == 0:
         if how == 0:
             DefconfigPacmanrc(kver)
         elif how == 1:
