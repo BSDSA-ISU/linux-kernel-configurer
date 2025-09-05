@@ -41,7 +41,7 @@ class Version:
 
     @staticmethod
     def getver(numbr):
-        url = f"https://raw.githubusercontent.com/AlieeLinux/linux-6.12.X/refs/heads/main/versions/{numbr}"
+        url = f"https://raw.githubusercontent.com/BSDSA-ISU/linux-kernel-configurer/refs/heads/main/versions/{numbr}"
         response = requests.get(url)
 
         if response.status_code == 200:

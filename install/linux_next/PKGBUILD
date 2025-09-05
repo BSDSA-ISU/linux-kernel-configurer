@@ -1,0 +1,45 @@
+# Maintainer: Ali Ali <AlieAlii@goo.su>
+pkgname="linux-kyouko-rc"
+pkgver=rchere
+pkgrel=0
+pkgdesc="Linux kernel made with kyouko power"
+arch=('x86_64')
+url="https://kernel.org/"
+license=('GPL-2.0-only')
+groups=('base-devel')
+depends=('glibc')
+replaces=('linux-hoshino')
+makedepends=('coreutils' 'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'rust' 'pahole' 'pacman')
+optdepends=('coreutils: simple Linux tools functionality?'
+    "ani-cli: Sit back and watch anime."
+    "sway: best simple waylander experience"
+    "mkinitcpio: Modular initramfs image creation utility"
+)
+install=linux.install
+provides=("Kyouko" "modules" "PeakYuri" "linux" 'linux-headers' 'linux-Kyouko' "linux-api-headers=$pkgver")
+conflicts=("linux-hoshino" "linux-kyouko" "linux-kyouko-iwlwifi")
+
+prepare() {
+    cd ..
+    mkdir -p "$srcdir/usr"
+    make -j ${nproc} headers_install INSTALL_HDR_PATH="$srcdir/usr"
+}
+
+build() {
+    mkdir -p "$srcdir/usr"
+    cd "$srcdir"
+    mkdir -p etc/mkinitcpio.d
+    tar -xvf ../*.tar
+    rm -rvf boot/vmlinux*
+    mv -v boot/config* boot/config-kyouko
+    mv -v boot/vmlinuz* boot/vmlinuz-kyouko
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/lib" || return 0
+    mkdir -p "$pkgdir/etc/mkinitcpio.d/" || return 0
+    cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-kyouko.preset"
+    cp -rvfa -- boot "$pkgdir/" 
+    cp -rvfa -- lib/* "$pkgdir/usr/lib" || return 0
+    cp -rvfa -- usr/* "$pkgdir/usr/" || return 0
+}

@@ -52,7 +52,7 @@ def main():
 
     if dversion == 8:
         kver = fetch_next.Version.fetchver(vername)
-    if  dversion >= 5:
+    elif  dversion >= 5:
         kver = version.fetchver5(vername)
     elif dversion == 0:
         kver = version.fetchverrc(vername)
