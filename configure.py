@@ -1,8 +1,11 @@
+from Alimod import linux
 from Alimod.linux import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman, DirectCompile
 from Alimod.versions import Version
 from Alimod import clean
 from Alimod.linuxrc import LocalModConfigpacmanrc, DefconfigPacmanrc, MenuconfigPacmanrc, DirectCompilerc
 from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5, DirectCompile5
+from Alimod.linux_next import download as fetch_next
+from Alimod.linux_next import linux as linux_next
 
 version = Version()
 
@@ -17,13 +20,14 @@ def main():
     print("(5) Linux LTS 5.15")
     print("(6) Linux LTS 5.10")
     print("(7) Linux LTS 5.4")
+    print("(8) Linux next")
     try:
         dversion = int(input(">>"))
     except ValueError:
         print("error pick a valid shit")
         return 2
 
-    if dversion >= 8:
+    if dversion >= 9:
         print("error. pick a valid shit")
         return 9
 
@@ -43,7 +47,11 @@ def main():
         vername = "linux510lts"
     elif dversion == 7:
         vername = "linux54lts"
+    elif dversion == 8:
+        vername = "linux_next"
 
+    if dversion == 8:
+        kver = fetch_next.Version.fetchver(vername)
     if  dversion >= 5:
         kver = version.fetchver5(vername)
     elif dversion == 0:
@@ -59,6 +67,17 @@ def main():
     print("(3) Direct compile(do nothing)")
 
     how = int(input(">>"))
+
+    if dversion == 8:
+        if how == 0:
+            linux_next.DefconfigPacman(kver)
+        elif how == 1:
+            linux_next.MenuconfigPacman(kver)
+        elif how == 2:
+            linux_next.LocalModConfigpacman(kver)
+        elif how == 3:
+            linux_next.DirectCompile(kver)
+
 
     if dversion == 0:
         if how == 0:
