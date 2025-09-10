@@ -1,7 +1,7 @@
 # Maintainer: Ali Ali <AlieAlii@goo.su>
 pkgname="linux-kyouko"
-pkgver=6.15.7
-pkgrel=4
+pkgver=6.0.0
+pkgrel=0
 pkgdesc="Linux kernel made with kyouko power"
 arch=('x86_64')
 url="https://kernel.org/"
@@ -9,7 +9,7 @@ license=('GPL-2.0-only')
 groups=('base-devel')
 depends=('glibc')
 replaces=('linux-hoshino')
-makedepends=('coreutils' 'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'rust' 'pahole' 'pacman')
+makedepends=('coreutils' 'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'pahole' 'pacman')
 optdepends=('coreutils: simple Linux tools functionality?'
     "ani-cli: Sit back and watch anime."
     "sway: best simple waylander experience"
