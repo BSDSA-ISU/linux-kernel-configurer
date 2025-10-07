@@ -1,5 +1,5 @@
 # Maintainer: Ali Ali <AlieAlii@goo.su>
-pkgname="linux-kyouko-rc"
+pkgname="linux-kyouko-next"
 pkgver=rchere
 pkgrel=0
 pkgdesc="Linux kernel made with kyouko power"
