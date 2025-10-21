@@ -21,3 +21,9 @@
 - **soon**
   - iwlwifi-next
   - wireless-next
+
+Usage:
+
+```python
+python configure.py
+```

@@ -13,7 +13,7 @@ class Version:
                 print("verification Failed.")
                 exit(8)
             else:
-                os.system(f"tar -xvf {linuxversion}.tar")
+                os.system(f"tar -xvf {linuxversion}.tar.gz")
 
         return linuxversion
 
