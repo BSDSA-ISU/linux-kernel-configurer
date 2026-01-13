@@ -24,11 +24,11 @@ def main():
     try:
         dversion = int(input(">>"))
     except ValueError:
-        print("error pick a valid shit")
+        print("error pick a valid choice")
         return 2
 
     if dversion >= 9:
-        print("error. pick a valid shit")
+        print("error. pick a valid choice")
         return 9
 
     if dversion == 0:
