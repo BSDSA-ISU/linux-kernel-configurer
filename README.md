@@ -11,6 +11,7 @@
 - it includes
 
   - linux stable
+  - linux 6.18 lts(soon)
   - linux 6.12 lts
   - linux 6.6 lts
   - linux 6.1 lts
