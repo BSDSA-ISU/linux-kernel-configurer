@@ -41,5 +41,5 @@ package() {
     cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-kyouko.preset"
     cp -rvfa -- boot "$pkgdir/" 
     cp -rvfa -- lib/* "$pkgdir/usr/lib" || return 0
-    cp -rvfa -- usr/* "$pkgdir/usr/" || return 0
+#    cp -rvfa -- usr/* "$pkgdir/usr/" || return 0
 }
