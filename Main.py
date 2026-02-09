@@ -1,4 +1,3 @@
-from Alimod import linux
 from Alimod.linux import LocalModConfigpacman, DefconfigPacman, MenuconfigPacman, DirectCompile
 from Alimod.versions import Version
 from Alimod import clean
@@ -6,11 +5,11 @@ from Alimod.linuxrc import LocalModConfigpacmanrc, DefconfigPacmanrc, Menuconfig
 from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5, DirectCompile5
 from Alimod.linux_next import download as fetch_next
 from Alimod.linux_next import linux as linux_next
+import sys
 
 version = Version()
 
 def main():
-    clean.clean()
     print("What version of linux Do you want to install? \n")
     print("(0) Rc Linux")
     print("(1) stable Linux 6.18")
@@ -21,13 +20,19 @@ def main():
     print("(6) Linux LTS 5.10")
     print("(7) Linux LTS 5.4")
     print("(8) Linux next")
+    print("(9) Clean build and source Files")
+
     try:
         dversion = int(input(">>"))
     except ValueError:
         print("error pick a valid shit")
         return 2
 
-    if dversion >= 9:
+    if dversion == 9:
+        clean.clean()
+        sys.exit()
+
+    if dversion >= 10:
         print("error. pick a valid shit")
         return 9
 
