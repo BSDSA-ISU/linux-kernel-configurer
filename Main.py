@@ -12,14 +12,14 @@ version = Version()
 def main():
     print("What version of linux Do you want to install? \n")
     print("(0) Rc Linux")
-    print("(1) stable Linux 6.18")
-    print("(2) LTS Linux 6.12")
-    print("(3) Linux LTS 6.6")
-    print("(4) Linux LTS 6.1")
-    print("(5) Linux LTS 5.15")
-    print("(6) Linux LTS 5.10")
-    print("(7) Linux LTS 5.4")
-    print("(8) Linux next")
+    print("(1) Stable Linux 6.19")
+    print("(2) Linux LTS 6.18")
+    print("(3) Linux LTS 6.12")
+    print("(4) Linux LTS 6.6")
+    print("(5) Linux LTS 6.1")
+    print("(6) Linux LTS 5.15")
+    print("(7) Linux LTS 5.10")
+    print("(8) Linux LTS 5.4")
     print("(9) Clean build and source Files")
 
     try:
@@ -38,21 +38,23 @@ def main():
 
     if dversion == 0:
         vername = "linuxrc"
-    elif dversion == 1:
+    if dversion == 1:
         vername = "linuxstable"
     elif dversion == 2:
-        vername = "linux612lts"
+        vername = "linux618lts"
     elif dversion == 3:
+        vername = "linux612lts"
+    elif dversion == 4:
         vername = "linux66lts"
-    elif dversion== 4:
+    elif dversion== 5:
         vername = "linux61lts"
-    elif dversion == 5:
-        vername = "linux515lts"
     elif dversion == 6:
-        vername = "linux510lts"
+        vername = "linux515lts"
     elif dversion == 7:
-        vername = "linux54lts"
+        vername = "linux510lts"
     elif dversion == 8:
+        vername = "linux54lts"
+    elif dversion == 9:
         vername = "linux_next"
 
     if dversion == 8:
