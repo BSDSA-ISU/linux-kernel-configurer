@@ -6,6 +6,7 @@ from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPac
 from Alimod.linux_next import download as fetch_next
 from Alimod.linux_next import linux as linux_next
 import sys
+from Alimod.GetVer import GetVersion as getver, linuxdownload, linuxdownload5, GetVersion5 as getver5
 
 version = Version()
 
@@ -30,42 +31,39 @@ def main():
 
     if dversion == 9:
         clean.clean()
-        sys.exit()
+        main()
 
     if dversion >= 10:
         print("error. pick a valid shit")
         return 9
 
     if dversion == 0:
-        vername = "linuxrc"
+        vername = "linuxrc(working on)"
     if dversion == 1:
-        vername = "linuxstable"
+        vername = "6.19"
     elif dversion == 2:
-        vername = "linux618lts"
+        vername = "6.18"
     elif dversion == 3:
-        vername = "linux612lts"
+        vername = "6.12"
     elif dversion == 4:
-        vername = "linux66lts"
+        vername = "6.6"
     elif dversion== 5:
-        vername = "linux61lts"
+        vername = "6.1"
     elif dversion == 6:
-        vername = "linux515lts"
+        vername = "5.15"
     elif dversion == 7:
-        vername = "linux510lts"
+        vername = "5.10"
     elif dversion == 8:
-        vername = "linux54lts"
+        vername = "5.4"
     elif dversion == 9:
         vername = "linux_next"
 
-    if dversion == 8:
-        kver = fetch_next.Version.fetchver(vername)
-    elif  dversion >= 5:
-        kver = version.fetchver5(vername)
-    elif dversion == 0:
-        kver = version.fetchverrc(vername)
+    if dversion < 6:
+        kver = f"linux-{getver(vername)}"
+        linuxdownload(kver)
     else:
-        kver = version.fetchver(vername)
-
+        kver = f"linux-{getver5(vername)}"
+        linuxdownload5(kver)
 
     print("how do you want to start configure your kernel? \n")
     print("(0) default from /proc/config.gz")
