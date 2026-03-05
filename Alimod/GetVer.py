@@ -86,8 +86,23 @@ def verity(version):
     s = subprocess.run(["gpg2", "--verify", f"{version}.tar.sign"])
     return s.returncode
 
+def linuxdownloadrc(linuxversion):
+    if os.path.exists(linuxversion) == False:
+        os.system(f"wget -c 'https://git.kernel.org/torvalds/t/{linuxversion}.tar.gz'")
+        os.system(f"tar -xvf {linuxversion}.tar.gz")
 
+        return linuxversion
+
+def releasecandidate(numbr):
+    url = f"https://raw.githubusercontent.com/BSDSA-ISU/linux-kernel-configurer/refs/heads/main/versions/{numbr}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        version = response.text.strip()
+        return version
+    else:
+        print("no version available. exiting...")
+        exit(9)
 
 if __name__ == "__main__":
     a = GetVersion5("6.18")
-    print(a)

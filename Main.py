@@ -6,7 +6,7 @@ from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPac
 from Alimod.linux_next import download as fetch_next
 from Alimod.linux_next import linux as linux_next
 import sys
-from Alimod.GetVer import GetVersion as getver, linuxdownload, linuxdownload5, GetVersion5 as getver5
+from Alimod.GetVer import GetVersion as getver, linuxdownload, linuxdownload5, GetVersion5 as getver5, releasecandidate, linuxdownloadrc
 
 version = Version()
 
@@ -38,7 +38,7 @@ def main():
         return 9
 
     if dversion == 0:
-        vername = "linuxrc(working on)"
+        vername = "linuxrc"
     if dversion == 1:
         vername = "6.19"
     elif dversion == 2:
@@ -58,9 +58,14 @@ def main():
     elif dversion == 9:
         vername = "linux_next"
 
-    if dversion < 6:
+    if dversion < 6 and dversion != 0:
         kver = f"linux-{getver(vername)}"
         linuxdownload(kver)
+
+    elif dversion == 0:
+        kver = releasecandidate(vername)
+
+        linuxdownloadrc(kver)
     else:
         kver = f"linux-{getver5(vername)}"
         linuxdownload5(kver)
