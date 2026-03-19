@@ -3,9 +3,7 @@ from Alimod.versions import Version
 from Alimod import clean
 from Alimod.linuxrc import LocalModConfigpacmanrc, DefconfigPacmanrc, MenuconfigPacmanrc, DirectCompilerc
 from Alimod.linux5 import LocalModConfigpacman5, DefconfigPacman5, MenuconfigPacman5, DirectCompile5
-from Alimod.linux_next import download as fetch_next
 from Alimod.linux_next import linux as linux_next
-import sys
 from Alimod.GetVer import GetVersion as getver, linuxdownload, linuxdownload5, GetVersion5 as getver5, releasecandidate, linuxdownloadrc
 
 version = Version()
