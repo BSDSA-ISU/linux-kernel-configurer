@@ -1,12 +1,12 @@
 # Linux Autoconfigurer
 
-## Table here later
+> WArning!! rhis only world on archlinux
 
-### how does this works?
+## how does this works?
 
 - its simple. just a python script that automates the commands order for me to configure a custom kernel
 
-### what includes on this?
+## what includes on this?
 
 - it includes
 
