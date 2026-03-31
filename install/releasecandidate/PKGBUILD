@@ -1,14 +1,14 @@
 # Maintainer: Ali Ali <AlieAlii@goo.su>
-pkgname="linux-kyouko-rc"
+pkgname="linux-koishi-rc"
 pkgver=6.16
 pkgrel=1
-pkgdesc="Linux kernel made with kyouko power"
+pkgdesc="Linux kernel made with koishi power"
 arch=('x86_64')
 url="https://kernel.org/"
 license=('GPL-2.0-only')
 groups=('base-devel')
 depends=('glibc')
-replaces=('linux-hoshino')
+replaces=('linux-koishi')
 makedepends=('coreutils' 'base-devel' 'bc' 'kmod'  'libelf' 'libcap' 'ninja' 'python' 'pahole' 'pacman')
 optdepends=('coreutils: simple Linux tools functionality?'
     "ani-cli: Sit back and watch anime."
@@ -16,7 +16,7 @@ optdepends=('coreutils: simple Linux tools functionality?'
     "mkinitcpio: Modular initramfs image creation utility"
 )
 install=linux.install
-provides=("Kyouko" "modules" "PeakYuri" "linux" 'linux-headers' 'linux-Kyouko')
+provides=("koishi" "modules" "PeakYuri" "linux" 'linux-headers' 'linux-Kyouko')
 conflicts=("linux-hoshino")
 
 prepare() {
@@ -31,14 +31,14 @@ build() {
     mkdir -p etc/mkinitcpio.d
     tar -xvf ../*.tar
     rm -rvf boot/vmlinux* boot/System.map* || echo "\n\n\n\n\n\n"
-    mv -v boot/config* boot/config-kyouko
-    mv -v boot/vmlinuz* boot/vmlinuz-kyouko
+    mv -v boot/config* boot/config-koishi
+    mv -v boot/vmlinuz* boot/vmlinuz-koishi
 }
 
 package() {
     mkdir -p "$pkgdir/usr/lib" || return 0
     mkdir -p "$pkgdir/etc/mkinitcpio.d/" || return 0
-    cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-kyouko.preset"
+    cp -rvf ../package.preset "$pkgdir/etc/mkinitcpio.d/linux-koishi.preset"
     cp -rvfa -- boot "$pkgdir/" 
     cp -rvfa -- lib/* "$pkgdir/usr/lib" || return 0
     cp -rvfa -- usr/* "$pkgdir/usr/" || return 0
